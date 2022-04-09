@@ -7,6 +7,7 @@ from threading import Thread
 # Function for buttons of GUI
 def snake():
     # comp choice from choices list
+    
     comp_choice = random.choice(choices)
     player_choice = "snake"
     game(comp_choice,player_choice)
@@ -26,11 +27,17 @@ def gun():
 def res_stat():
     reset_button.config(text="reseting...")
     reset_button.config(state=DISABLED)
+    snake_button.config(state=DISABLED)
+    water_button.config(state=DISABLED)
+    gun_button.config(state=DISABLED)
     with open("stats.txt","w") as file:
         file.write("Games Won = 0\nGames Lost = 0\nGames Tied = 0")
         get_data()
     reset_button.config(text="Reset stats")
     reset_button.config(state=ACTIVE)
+    snake_button.config(state=ACTIVE)
+    water_button.config(state=ACTIVE)
+    gun_button.config(state=ACTIVE)
 
 def reset_thread():
     thread = Thread(target=res_stat)
